@@ -1,0 +1,233 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  /* Base */
+  --radius: 1rem;
+  --font-sans: "Public Sans", system-ui, sans-serif;
+  --font-display: "Clash Grotesk", system-ui, sans-serif;
+  --font-mono: monospace;
+
+  /* Taiko Colors */
+  --taiko-pink: #e81899;
+  --taiko-pink-dark: #c8047d;
+  --taiko-pink-light: #ff6fc8;
+  --taiko-pink-lighter: #ffc6e9;
+  --taiko-green: #d4ff00;
+  --taiko-purple: #c480fe;
+  --taiko-purple-light: #dbb1ff;
+
+  /* Main Theme Colors */
+  --background: #f8f8f8;
+  --foreground: #191e28;
+
+  --card: #ffffff;
+  --card-foreground: #191e28;
+
+  --popover: #ffffff;
+  --popover-foreground: #191e28;
+
+  --primary: #e81899;
+  --primary-foreground: #ffffff;
+
+  --secondary: #d4ff00;
+  --secondary-foreground: #191e28;
+
+  --muted: #f3f3f3;
+  --muted-foreground: #444a55;
+
+  --accent: #c8047d;
+  --accent-foreground: #ffffff;
+
+  --destructive: #ff3b30;
+  --border: #cacbce;
+  --input: #cacbce;
+  --ring: #c8047d;
+
+  /* Chart Colors */
+  --chart-1: #e81899;
+  --chart-2: #d4ff00;
+  --chart-3: #c480fe;
+  --chart-4: #adb1b8;
+  --chart-5: #5d636f;
+
+  /* Sidebar */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #191e28;
+  --sidebar-primary: #e81899;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f8f8f8;
+  --sidebar-accent-foreground: #191e28;
+  --sidebar-border: #cacbce;
+  --sidebar-ring: #e81899;
+}
+
+.dark {
+  --background: #191e28;
+  --foreground: #f3f3f3;
+
+  --card: #0b101b;
+  --card-foreground: #f3f3f3;
+
+  --popover: #0b101b;
+  --popover-foreground: #f3f3f3;
+
+  --primary: #e81899;
+  --primary-foreground: #ffffff;
+
+  --secondary: #d4ff00;
+  --secondary-foreground: #191e28;
+
+  --muted: #5d636f;
+  --muted-foreground: #adb1b8;
+
+  --accent: #ff6fc8;
+  --accent-foreground: #ffffff;
+
+  --destructive: #ff3b30;
+  --border: rgba(173, 177, 184, 0.2);
+  --input: rgba(173, 177, 184, 0.2);
+  --ring: #ff6fc8;
+
+  /* Chart Colors */
+  --chart-1: #e81899;
+  --chart-2: #d4ff00;
+  --chart-3: #c480fe;
+  --chart-4: #adb1b8;
+  --chart-5: #f3f3f3;
+
+  /* Sidebar */
+  --sidebar: #0b101b;
+  --sidebar-foreground: #f3f3f3;
+  --sidebar-primary: #e81899;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #191e28;
+  --sidebar-accent-foreground: #f3f3f3;
+  --sidebar-border: rgba(173, 177, 184, 0.2);
+  --sidebar-ring: #ff6fc8;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+  }
+}
+
+/* Custom Button Styles */
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-primary-foreground rounded-full px-5 py-2 font-bold flex items-center justify-center;
+  }
+
+  .btn-outline {
+    @apply border-2 border-accent bg-transparent text-foreground rounded-full px-5 py-2 font-bold flex items-center justify-center;
+  }
+
+  .highlight-bar {
+    @apply bg-secondary text-primary py-5 flex justify-center items-center gap-10 overflow-hidden whitespace-nowrap;
+  }
+}
+
+/* Font imports - add the actual font sources as needed */
+@font-face {
+  font-family: "Clash Grotesk";
+  src: url("/fonts/ClashGrotesk-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Clash Grotesk";
+  src: url("/fonts/ClashGrotesk-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Clash Grotesk";
+  src: url("/fonts/ClashGrotesk-SemiBold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Public Sans";
+  src: url("/fonts/PublicSans-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Public Sans";
+  src: url("/fonts/PublicSans-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Public Sans";
+  src: url("/fonts/PublicSans-SemiBold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
